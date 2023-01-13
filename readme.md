@@ -73,6 +73,16 @@ $ docker volume create <volume_name>
 ```
 $ docker volume inspect <volume_name>
 ```
+
+### Gắn ổ đĩa vào container (xóa container không bị mất dữ liệu)
+
+docker run -it --mount source=D2,target=/home/disk2 ubuntu:latest
+
+### Tạo ổ đĩa ánh xạ tới thư mục máy host
+
+docker volume create --opt device=/DATA/ --opt type=none --opt o=bind DISK1
+docker run -it -v D1:/home/disk1 ubuntu:latest
+
 ```
 $ docker run -it --rm -v path_directory_in_host:path_directory_in_container docker_image_name /bin/bash 
 ```

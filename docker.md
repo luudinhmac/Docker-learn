@@ -1,4 +1,21 @@
-## Tải docker image về máy (pull docker image)
+# Các lệnh cơ bản trong docker
+
+## Kiểm tra version docker
+```
+docker --version
+```
+## Thông tin hệ thống docker
+```
+$ docker info
+```
+
+## Kiểm tra các image đang có trong máy
+```
+$ docker images
+$ docker image ls
+```
+
+## Tải docker image từ hub.docker.com về máy (pull docker image)
 ```
 $ docker pull docker_image_name:tag_name
 ```
@@ -8,21 +25,17 @@ $ docker pull ubuntu:latest
 $ docker pull ubuntu:18.04
 ```
 
-## Kiểm tra các image đang có trong máy
-```
-$ docker images
-$ docker image ls
-```
-## Kiểm tra các container đã được tạo trong máy
+
+## Kiểm tra tất cả các container đã được tạo trong máy
 ```
 $ docker ps -a
 ```
-## Kiểm tra các container đã tạo và đang chạy (container sẽ được bật hoặc tắt (stop-start))
+## Kiểm tra các container đang chạy (container sẽ được bật hoặc tắt (stop-start))
 ```
 $ docker ps 
 ```
 ## Tạo docker container
-### Không đặt tên
+### Không đặt tên container
 Container được tạo ra có tên bất kỳ
 ```
 $ docker run -it docker_image_name /bin/bash 
@@ -36,17 +49,17 @@ $ docker run -it --name test docker_image_name /bin/bash
 ```
 $ docker run -it --rm --gpus '"device=1,2"' docker_image_name /bin/bash
 ```
-Nếu mới sử dụng thì dể cho dễ dàng anh các bạn cứ để "all"
+### cho phép chạy tất cả các resource gpu
 ```
 $ docker run -it --rm --gpus all docker_image_name /bin/bash 
 ```
 
-### Volumes
+### Docker Volumes
 Project của chúng ta được tạo ở 1 thư mục trong container. Nếu thư mục này không được mount ra ngoài thì khi container bị xóa đồng nghĩa với việc  
 project của chúng ta cũng bay hơi. Do đó khi tạo container cần thiết mount thư mục ở trong container ra máy vật lý.  
 Hiểu đơn giản là container và máy vật lý dùng chung 1 thư mục. 
 ```
-$ docker run -it --rm -v path_directory_in_your_machine:path_directory_in_container docker_image_name /bin/bash 
+$ docker run -it --rm -v path_directory_in_host:path_directory_in_container docker_image_name /bin/bash 
 ```
 Trước dấu ":" là đường dẫn ở máy vật lý, sau dấu ":" là đường dẫn trong container  
 Ví dụ mình muốn mount thư mục /home/dev trong container vào thư mục /home/macld/dev ở trên máy vật lý của mình thì mình làm như sau:

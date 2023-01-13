@@ -1,1 +1,1 @@
-- Docker Container l� m?t m�i tru?ng du?c ?o h�a v� ho?t d?ng trong qu� tr�nh run-time
+- Docker Container là một môi trường được ảo hóa và hoạt động trong quá trình run-time

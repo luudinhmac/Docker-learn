@@ -99,6 +99,11 @@ $ docker network inspect <network_name>
 ```
 $ docker rm <network_name>
 ```
+#### Kết nối network vào một container
+```
+$ docker network connect <type_network> <network_name>
+$ docker network connect brigde my_network
+```
 ```
 $ docker run -it --rm -p port_in_your_machine:port_in_container docker_image_name /bin/bash 
 ```

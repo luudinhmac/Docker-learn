@@ -1,5 +1,3 @@
-# Hướng dẫn để các bạn có thể sử dụng docker một cách cơ bản nhất. Sau đó, các bạn cần gì thì học cái đó thông qua tài liệu của nhà phát triển
-
 ## Tải docker image về máy (pull docker image)
 ```
 $ docker pull docker_image_name:tag_name

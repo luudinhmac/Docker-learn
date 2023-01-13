@@ -11,6 +11,7 @@ $ docker pull ubuntu:18.04
 ## Kiểm tra các image đang có trong máy
 ```
 $ docker images
+$ docker image ls
 ```
 ## Kiểm tra các container đã được tạo trong máy
 ```

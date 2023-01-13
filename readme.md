@@ -1,7 +1,6 @@
 - Docker Container là một môi trường được ảo hóa và hoạt động trong quá trình run-time
 
 # Các lệnh cơ bản trong docker
-
 ## Kiểm tra version docker
 ```
 docker --version
@@ -10,13 +9,11 @@ docker --version
 ```
 $ docker info
 ```
-
 ## Kiểm tra các image đang có trong máy
 ```
 $ docker images
 $ docker image ls
 ```
-
 ## Tải docker image từ hub.docker.com về máy (pull docker image)
 ```
 $ docker pull docker_image_name:tag_name
@@ -26,8 +23,6 @@ Ví dụ:
 $ docker pull ubuntu:latest
 $ docker pull ubuntu:18.04
 ```
-
-
 ## Kiểm tra tất cả các container đã được tạo trong máy
 ```
 $ docker ps -a
@@ -53,9 +48,7 @@ $ docker run -it --name test docker_image_name /bin/bash
 -p public-port:target-port (container có cổng ngoài public ánh xạ vào cổng trong target-port của container)
 --restart=always (Thiết lập để docker tự khởi động container)
 --rm  (xóa container sau khi thoát container)
-
 ```
-
 ### Lựa chọn GPU (Không dùng hoặc máy không có GPU thì không cần quan tâm)
 ```
 $ docker run -it --rm --gpus '"device=1,2"' docker_image_name /bin/bash
@@ -64,17 +57,13 @@ $ docker run -it --rm --gpus '"device=1,2"' docker_image_name /bin/bash
 ```
 $ docker run -it --rm --gpus all docker_image_name /bin/bash 
 ```
-
 ### Docker Volumes
 Project của chúng ta được tạo ở 1 thư mục trong container. Nếu thư mục này không được mount ra ngoài thì khi container bị xóa đồng nghĩa với việc  
 project của chúng ta cũng bay hơi. Do đó khi tạo container cần thiết mount thư mục ở trong container ra máy vật lý.  
 Hiểu đơn giản là container và máy vật lý dùng chung 1 thư mục. 
-
 #### Kiểm tra danh sách volume
-
 ```
 $ docker volume ls
-
 ```
 #### Tạo volume
 ```
@@ -94,7 +83,22 @@ $ docker run -it --rm -v /home/macld/dev:/home/dev docker_image_name /bin/bash
 ```
 
 ### Network
-Chủ yếu là mount port cho container thôi. (Về port là gì thì anh em đọc thêm nha)  
+#### Kiểm tra danh sách network
+```
+$ docker network ls
+```
+#### Tạo docker network
+```
+$ docker network create --driver bridge <network_name>
+```
+#### Kiểm tra chi tiết docker network
+```
+$ docker network inspect <network_name>
+```
+#### Xóa network
+```
+$ docker rm <network_name>
+```
 ```
 $ docker run -it --rm -p port_in_your_machine:port_in_container docker_image_name /bin/bash 
 ```

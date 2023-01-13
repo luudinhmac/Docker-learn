@@ -44,6 +44,15 @@ $ docker run -it docker_image_name /bin/bash
 ```
 $ docker run -it --name test docker_image_name /bin/bash 
 ```
+### Một số tham số thêm vào khi tạo docker container.
+```
+-v path-in-host:path-in-container  (ánh xạ thư mục máy host vào container)
+--volumes-from other-container-name (nhận chia sẻ thư mục đã ánh xạ từ container khác)
+-p public-port:target-port (container có cổng ngoài public ánh xạ vào cổng trong target-port của container)
+--restart=always (Thiết lập để docker tự khởi động container)
+--rm  (xóa container sau khi thoát container)
+
+```
 
 ### Lựa chọn GPU (Không dùng hoặc máy không có GPU thì không cần quan tâm)
 ```
@@ -58,6 +67,21 @@ $ docker run -it --rm --gpus all docker_image_name /bin/bash
 Project của chúng ta được tạo ở 1 thư mục trong container. Nếu thư mục này không được mount ra ngoài thì khi container bị xóa đồng nghĩa với việc  
 project của chúng ta cũng bay hơi. Do đó khi tạo container cần thiết mount thư mục ở trong container ra máy vật lý.  
 Hiểu đơn giản là container và máy vật lý dùng chung 1 thư mục. 
+
+#### Kiểm tra danh sách volume
+
+```
+$ docker volume ls
+
+```
+#### Tạo volume
+```
+$ docker volume create <volume_name>
+```
+#### Xem thông tin chi tiết volume
+```
+$ docker volume inspect <volume_name>
+```
 ```
 $ docker run -it --rm -v path_directory_in_host:path_directory_in_container docker_image_name /bin/bash 
 ```

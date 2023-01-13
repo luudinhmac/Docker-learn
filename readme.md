@@ -68,6 +68,8 @@ $ docker volume ls
 #### Tạo volume
 ```
 $ docker volume create <volume_name>
+$ docker volume create D1
+$ docker volume create D2
 ```
 #### Xem thông tin chi tiết volume
 ```

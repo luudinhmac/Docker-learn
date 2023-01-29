@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body class="h-100">
+  <div class="main-content h-100">
+    <div class="container mt-5">
+      <div class="d-flex align-items-center">
+        <div class="title mr-auto">
+          <h1><%= title %></h1>
+        </div>
+        <div class="d-flex align-items-center">
+          Welcome: <%= user.email %>
+
+          <form action="/logout" method="POST">
+            <button type="submit" class="btn btn-link">Logout</button>
+          </form>
+        </div>
+      </div>
+      <hr>
+
+      <div class="content-body">
+        <div class="add-image">
+          <form action="/products" method="POST" enctype="multipart/form-data">
+            <div class="title">
+              <h2>Add new product</h2>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Name</span>
+              </div>
+              <input name="product_name" type="text" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Quantity</span>
+              </div>
+              <input name="product_quantity" type="text" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Image</span>
+              </div>
+              <div class="custom-file">
+                <input name="product_image" type="file" class="custom-file-input" id="inputGroupFile01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Add product</button>
+          </form>
+        </div>
+        <hr class="mt-5 mb-5">
+        <div class="list-products">
+          <div class="title">
+            <h2>List products</h2>
+          </div>
+          <div class="table-responsive"> 
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% products.forEach(function(product){ %>
+                  <tr>
+                    <th scope="row"><%= product._id %></th>
+                    <td><img src="<%= product.image %>" alt="Image" style="max-width: 70px;"></td>
+                    <td><%= product.name %></td>
+                    <td><%= product.quantity %></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </divclas>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
